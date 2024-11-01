@@ -27,7 +27,6 @@ def create_account():
         email = request.form.get('email')
         role = request.form.get('role')
         password = request.form.get('password')  # Bảo mật password!
-
         # Kiểm tra thông tin và thêm vào MongoDB
         mongo.db.users.insert_one({
             'username': username,
@@ -52,8 +51,6 @@ def delete(user_id):
     return redirect(url_for('admin.manage'))
 
 
-from werkzeug.security import generate_password_hash
-
 @admin_bp.route('/update-account/<user_id>', methods=['GET', 'POST'])
 @login_required
 @role_required('admin', 'manage') 
@@ -75,7 +72,6 @@ def update_account(user_id):
             'email': email,
             'role': role
         }
-        # Kiểm tra và cập nhật mật khẩu nếu có
         if new_password:
             update_data['password'] = generate_password_hash(new_password)
 

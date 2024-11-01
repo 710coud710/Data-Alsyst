@@ -35,7 +35,8 @@ def role_required(*roles):
     
 def create_app():
     app = Flask(__name__)
-    app.config["MONGO_URI"] = "mongodb://localhost:27017/thuctap"
+    # app.config["MONGO_URI"] = "mongodb://localhost:27017/thuctap"
+    app.config["MONGO_URI"] = "mongodb+srv://dduoc2002:1kNlNH22DZLjssr9@data-alyst.uowmx.mongodb.net/webdata?retryWrites=true&w=majority"
     app.secret_key = 'Hello9876541312'
 
     mongo.init_app(app)
