@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %} Data Analyst {% endblock %}
+{% block page_title %}History{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    {% if collections | length == 0 %}
+        <p>Không có collection nào.</p>
+    {% else %}
+        <table class="table table-striped white-box">
+            <div class="white-box">
+                <h1>All Data</h1>
+            </div>
+            <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Time</th>
+                    <th >Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for collection in collections %}
+                <tr>
+                    <td>{{ collection.original_filename }}</td>
+                    <td>{{ collection.time }}, {{ collection.date }}</td>
+                    <td >        
+                        <a href="{{ url_for('main.calculate_result', collection=collection.name) }}" 
+                            class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye"></i> View
+                        </a>
+                        <a href="{{ url_for('main.download_file', collection=collection.name) }}" 
+                            class="btn btn-secondary btn-sm">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                      
+                        <form method="post" action="{{ url_for('view.delete_data', collection=collection.name) }}" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa collection này?');">
+                                <i class="fas fa-trash-alt"></i> Delete</button>
+                        </form>   
+                       
+                    </td>
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

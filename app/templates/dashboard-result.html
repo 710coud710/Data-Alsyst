@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %} Data Alyst {% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+{% block content %}
+<div class="container mt-5 ">
+    <div class="container white-box p-4">
+        <form method="GET" action="{{ url_for('main.download_file') }}">
+             <input type="hidden" name="collection" value="{{ request.args.get('collection') }}">
+            <div class="row sort-options align-items-center">
+                <div class="col-md-8 d-flex">
+                    <label for="keyword_limit_select" class="form-label me-2">Download:</label>
+                    <select name="keyword_limit_select" class="form-select w-50 me-2">
+                        <option value="all">All</option>
+                        <option value="10">Top 10</option>
+                        <option value="50">Top 50</option>
+                        <option value="100">Top 100</option>
+                    </select>
+                    <button type="submit" class="btn btn-success me-2"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary"><i class="fa fa-backward"></i> Back</a>
+                </div>
+            </div>
+        </form>
+        <form method="POST" action="{{ url_for('main.search_view') }}">
+            <input type="hidden" name="collection" value="{{ request.args.get('collection') }}">
+            <div class="row mb-4" style="margin-top: 40px;">
+                <div class="col-md-6">
+                    <input type="text" name="search_keyword" class="form-control" placeholder="Enter search keyword..." value="{{ search_keyword }}">
+                </div>
+                <div class="col-md-2 search-buttons">
+                    <button type="submit" class="btn btn-primary"> <i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+        </form>
+        <form method="GET" action="{{ url_for('main.calculate_result') }}">
+            <input type="hidden" name="collection" value="{{ request.args.get('collection') }}">
+            <div class="row sort-options">
+                <div class="col-md-8 d-flex align-items-center">
+                    <select name="sort_column" class="form-select me-2" onchange="this.form.submit()" style="width: auto;">
+                        <option value="Point Value" {% if sort_column == 'Point Value' %} selected {% endif %}>Point Value</option>
+                        <option value="Search Volume (Global)" {% if sort_column == 'Search Volume (Global)' %} selected {% endif %}>Search Volume</option>
+                        <option value="CPC (Global)" {% if sort_column == 'CPC (Global)' %} selected {% endif %}>CPC</option>
+                        <option value="Competition (Global)" {% if sort_column == 'Competition (Global)' %} selected {% endif %}>Competition</option>
+                    </select>
+                    
+                    <select name="order" class="form-select" onchange="this.form.submit()" style="width: auto;">
+                        <option value="asc" {% if order == 'asc' %} selected {% endif %}>Ascending</option>
+                        <option value="desc" {% if order == 'desc' %} selected {% endif %}>Descending</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+
+    <!-- Phần hiển thị bảng giữ nguyên -->
+    <div class="table-responsive centered-form mt-4"> 
+        Calculation Results: {{ tables | safe }}
+    </div>
+</div>
+{% endblock %}

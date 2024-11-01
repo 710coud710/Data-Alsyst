@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %} Data Analyst - Admin {% endblock %}
+{% block page_title %}Manage{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <form method="POST" class="white-box">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username: </label>
+            <div class="form-control-plaintext" id="username">{{ user.username }}</div>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name:</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ user.name }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">New password:</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter new password if you want to change..">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select class="form-select" id="role" name="role" required>
+                <option value="manage" {% if user.role == 'manage' %}selected{% endif %}>Manage</option>
+                <option value="default" {% if user.role == 'default' %}selected{% endif %}>Default</option>
+            </select>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary me-2"> <i class="fas fa-arrow-up"></i> Update</button>
+            <a href="{{ url_for('admin.manage') }}" class="btn btn-danger"><i class="fas fa-times-circle"></i> Cancel</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

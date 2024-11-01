@@ -1,0 +1,156 @@
+:root {
+  --main-bg-color: #009d63;
+  --main-text-color: #009d63;
+  --second-text-color: #bbbec5;
+  --second-bg-color: #c1efde;
+}
+
+.primary-text {
+  color: var(--main-text-color);
+}
+
+.second-text {
+  color: var(--second-text-color);
+}
+
+.primary-bg {
+  background-color: var(--main-bg-color);
+}
+
+.secondary-bg {
+  background-color: var(--second-bg-color);
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+#wrapper {
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    #bacef3,
+    #c2d6f5,
+    #cbd7f7,
+    #d4e8f8,
+    #b6d7fb
+  );
+}
+
+#sidebar-wrapper {
+  
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active {
+  background-color: transparent;
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+/* Calculate */
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Đảm bảo các phần tử được xếp theo chiều dọc */
+  height: 500px; /* Đặt chiều cao bằng 100% viewport */
+  text-align: center; /* Căn giữa văn bản */
+}
+
+.centered-form {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: auto;  /* To center the table */
+}
+.table-responsive {
+  margin: auto;
+  max-width: 100%; /* Đảm bảo bảng không tràn ra ngoài */
+  background-color: white; /* Thêm nền trắng cho bảng */
+  padding: 15px; /* Khoảng cách nội dung với viền bảng */
+  border-radius: 8px; /* Bo góc cho bảng */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Tạo bóng để nổi bật bảng */
+}
+.table-responsive table {
+  width: 100%; /* Đảm bảo bảng chiếm hết vùng chứa */
+  text-align: left; /* Căn trái nội dung trong bảng */
+  margin-bottom: 15px; /* Tạo khoảng cách giữa bảng và phần tử dưới */
+  border-collapse: collapse; /* Kẻ viền mà không bị khoảng cách giữa các ô */
+}
+.table-responsive th, .table-responsive td {
+  border: 1px solid #ddd; /* Kẻ viền cho cột và hàng */
+  padding: 8px; /* Thêm khoảng trống trong ô */
+  text-align: left; /* Căn giữa nội dung */
+}
+
+.table-responsive th {
+  background-color: #f2f2f2; /* Thêm màu nền cho tiêu đề */
+  font-weight: bold; /* Đậm chữ cho đề mục */
+}
+
+.table-responsive tr:hover {
+  background-color: #f1f1f1; /* Thêm hiệu ứng khi rê chuột vào bảng */
+}
+
+
+/* result */
+/* Giữ nguyên phần white-box với nền trắng */
+.white-box {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
