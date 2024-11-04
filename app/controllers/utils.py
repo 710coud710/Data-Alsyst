@@ -68,7 +68,7 @@ def calculate_point_value(data):
     data['Point Value'] = (search_value + cpc_value + competition_value) / 3
     return data
 
-def search_keyword(data, keyword, threshold=40):
+def search_keyword(data, keyword, threshold=70):
     results = []
     for idx, row in data.iterrows():
         if is_similar(row['Keyword'], keyword, threshold):
@@ -112,9 +112,9 @@ def three_nearest_months(data):
     
     return [col.strftime('%Y-%m-%d %H:%M:%S') for col in nearest_date_columns]
 
-def is_date_string(column_name):
-    try:
-        pd.to_datetime(column_name, format='%Y-%m-%d', errors='raise')
-        return True
-    except (ValueError, TypeError):
-        return False
+# def is_date_string(column_name):
+#     try:
+#         pd.to_datetime(column_name, format='%Y-%m-%d', errors='raise')
+#         return True
+#     except (ValueError, TypeError):
+#         return False

@@ -1,8 +1,16 @@
-import json
+from flask import Flask, render_template
 
-class TestMain():
-    def test_index(self, client):
-        response = client.get('/')
-        assert response.status_code == 200
-        assert response.json == {'message': 'Hello, World!'}
-            
+app = Flask(__name__)
+
+
+
+@app.route('/')
+def hello():
+    return render_template('hello.html')
+
+@app.route('/home')
+def home()():
+    return render_template('Home.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)

@@ -26,14 +26,14 @@ def create_account():
         name = request.form.get('name')
         email = request.form.get('email')
         role = request.form.get('role')
-        password = request.form.get('password')  # Bảo mật password!
+        password = request.form.get('password')
         # Kiểm tra thông tin và thêm vào MongoDB
         mongo.db.users.insert_one({
             'username': username,
             'email': email,
             'role': role,
             'name': name,  
-            'password': password,   #generate_password_hash(password),  # Hash mật khẩu
+            'password': password,   
             'time_created': datetime.now()
         })
         flash('Tài khoản đã được thêm thành công!', 'success')
